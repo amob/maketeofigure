@@ -1,3 +1,4 @@
+#!/usr/bin/Rscript
 library(rgdal);library(raster);library(dismo)
 library(maptools)
 
@@ -5,12 +6,12 @@ setwd("~/maketeofigure/")
 
 
 #rasters, shapefiles, relevant spatial points
-alt=raster("~/alt_22.tif")
+alt=raster("alt_22.tif")
 projection(alt)="+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
-me = readOGR('/mexico', layer = 'MEX_adm0')
+me = readOGR('mexico', layer = 'MEX_adm0')
 
 #read points
-teolocs=read.csv("/teosintes.csv",header=T)
+teolocs=read.csv("teosintes.csv",header=T)
 teopoints=teolocs
 coordinates(teopoints)=~longitude+latitude
 teopoints@proj4string=CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
